@@ -87,7 +87,7 @@ public class HomeController {
 //        page.setRows(discussPostService.discussPostCount(userId));
 //
 //        List<DiscussPost> discussPosts = discussPostService.selectDiscussPost(userId, page.getCurrent(), page.getLimit());
-
+        System.out.println();
         return "site/profile";
     }
 
