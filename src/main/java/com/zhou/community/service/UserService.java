@@ -17,4 +17,8 @@ public interface UserService {
     void logout(String ticket);
 
     LoginTicket selectByTicket(String ticket);
+
+    int updateHeader(int id, String headerUrl);
+
+    int updatePassword(int id, String password);
 }

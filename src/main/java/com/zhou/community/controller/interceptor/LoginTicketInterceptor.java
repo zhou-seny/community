@@ -27,9 +27,9 @@ public class LoginTicketInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String ticket = CookieUtils.getCookieValue(request, "ticket");
-        if (ticket!=null){
+        if (ticket != null) {
             LoginTicket loginTicket = userService.selectByTicket(ticket);
-            if (loginTicket!=null && loginTicket.getStatus() == 0&&loginTicket.getExpired().after(new Date())){
+            if (loginTicket != null && loginTicket.getStatus() == 0 && loginTicket.getExpired().after(new Date())) {
                 User user = userService.selectById(loginTicket.getUserId());
                 hostHolder.setUser(user);
             }
@@ -40,7 +40,7 @@ public class LoginTicketInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         User user = hostHolder.getUser();
-        if (user!=null && modelAndView!=null){
+        if (user != null && modelAndView != null) {
             modelAndView.addObject("loginuser", user);
         }
     }
